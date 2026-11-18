@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quản lý chi tiêu cá nhân</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Quản lý chi tiêu cá nhân</h1>
+    </header>
+
+    <section class="filter-bar">
+      <label for="month-select">Tháng:</label>
+      <select id="month-select"></select>
+      <button id="new-expense-btn" type="button">+ Thêm khoản chi</button>
+    </section>
+
+    <section class="summary-cards">
+      <div class="card">
+        <div class="card-label">Tổng chi tháng này</div>
+        <div class="card-value" id="total-value">0 đ</div>
+      </div>
+      <div class="card chart-card">
+        <canvas id="category-chart" role="img" aria-label="Biểu đồ chi tiêu theo danh mục"></canvas>
+      </div>
+    </section>
+
+    <section class="list-section">
+      <table id="expense-table">
+        <thead>
+          <tr>
+            <th>Ngày</th>
+            <th>Danh mục</th>
+            <th>Ghi chú</th>
+            <th class="amount-col">Số tiền</th>
+            <th class="actions-col">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="expense-tbody"></tbody>
+      </table>
+      <p id="empty-message" class="empty-message" hidden>Chưa có khoản chi nào trong tháng này.</p>
+    </section>
+  </div>
+
+  <dialog id="expense-dialog">
+    <form id="expense-form" method="dialog">
+      <h2 id="dialog-title">Thêm khoản chi</h2>
+      <input type="hidden" id="expense-id" />
+
+      <label for="expense-date">Ngày</label>
+      <input type="date" id="expense-date" required />
+
+      <label for="expense-amount">Số tiền (VNĐ)</label>
+      <input type="number" id="expense-amount" min="1" step="1" required />
+
+      <label for="expense-category">Danh mục</label>
+      <select id="expense-category" required>
+        <option value="an_uong">Ăn uống</option>
+        <option value="di_chuyen">Di chuyển</option>
+        <option value="giai_tri">Giải trí</option>
+        <option value="hoa_don">Hoá đơn</option>
+        <option value="khac">Khác</option>
+      </select>
+
+      <label for="expense-note">Ghi chú</label>
+      <input type="text" id="expense-note" maxlength="200" />
+
+      <p id="form-error" class="form-error" hidden></p>
+
+      <div class="dialog-actions">
+        <button type="button" id="cancel-btn">Huỷ</button>
+        <button type="submit" id="save-btn">Lưu</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
