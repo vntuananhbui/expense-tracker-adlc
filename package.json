@@ -1,0 +1,18 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "Demo app quan ly chi tieu ca nhan (1 user, khong dang nhap)",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
+  }
+}
